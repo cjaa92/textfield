@@ -1,0 +1,54 @@
+.chat-input-field{
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  cursor: text;
+  border: none;
+  border-radius: 5px 5px;
+  border-color: #ffffff;
+  background-color: #ffffff;
+  display: flex;
+  padding: 5px 5px;
+}
+.extraComps{
+  background-color: #f6f6f4;
+  border-radius: 5px 5px;
+}
+
+.text-input{
+  border:0!important;
+}
+.text-input:focus{
+  outline: none;
+}
+.add-icon {
+  color: #6B42EE!important;
+  stroke-width: 2.5px;
+}
+
+.send{
+  top: 24px;
+  position: absolute;
+  width: 1.3em;
+  right: 25px;
+}
+
+.send-icon {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.hide{
+  display: none!important;
+}
+
+.img-profile{
+  border-radius: 25px !important;
+  padding-top: 2px;
+}
+
+.replyAs{
+  color: #c5c5c3!important;
+}
