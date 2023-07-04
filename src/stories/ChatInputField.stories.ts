@@ -5,7 +5,12 @@ import { ChatInputFields } from './ChatInputField';
 const meta: Meta<typeof ChatInputFields> = {
   title: 'ChatTextField',
   component: ChatInputFields,
-  tags: ['autodocs'],
+  parameters: {
+      previewTabs: {
+          'storybook/docs/panel': { hidden: true }
+      },
+      viewMode: 'canvas',
+  }
 };
 
 export default meta;
