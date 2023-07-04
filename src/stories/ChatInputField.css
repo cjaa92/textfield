@@ -7,14 +7,38 @@
   background-color: #ffffff;
   display: flex;
   padding: 5px 5px;
+  box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.62);
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.62);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.62);
 }
 .extraComps{
   background-color: #f6f6f4;
-  border-radius: 5px 5px;
+  border-radius: 25px 25px;
+  border: none;
+  outline: none;
+  padding: .3em 1.3em;
+  margin-left: .3em;
+}
+
+.sendComps{
+  background-color: #f6f6f4;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  top: 1.7em;
+  position: absolute;
+  width: 1.6em;
+  height: 1.6em;
+  right: 2em;
 }
 
 .text-input{
+  background-color: transparent!important;
   border:0!important;
+  position: absolute;
+  width:75vw!important;
+  left: 1.9em;
+  top: 1.8em;
 }
 .text-input:focus{
   outline: none;
@@ -22,16 +46,15 @@
 .add-icon {
   color: #6B42EE!important;
   stroke-width: 2.5px;
-}
-
-.send{
-  top: 24px;
   position: absolute;
-  width: 1.3em;
-  right: 25px;
+  left: 2.5em;
+  top: 1.95em;
 }
 
 .send-icon {
+  position: absolute;
+  right: .4em;
+  top: .3em;
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -45,10 +68,16 @@
 }
 
 .img-profile{
-  border-radius: 25px !important;
-  padding-top: 2px;
+  position: absolute;
+  left: 9.5em;
+  top: 1.8em;
+  width: 1.3em !important;
+  height: 1.3em !important;
+  border-radius: 50% !important;
+  opacity: 50%;
 }
 
 .replyAs{
   color: #c5c5c3!important;
+  padding-left: 1em;
 }
