@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiUserPlus ,FiSend} from "react-icons/fi";
 import './ChatInputField.css';
 import Image from 'next/image';
-
 
 type User = {
   name: string;
@@ -34,38 +33,49 @@ export const ChatInputFields = ({
   user,
   ...props
 }: ChatInputFieldsProps) => {
-  const name2Show = (assigned && user) ? user.name : label;
-  const image = (assigned && user) ? user.img : '';
-  const showWhenUnAssigned = !assigned ? "": " hide";
-  const showWhenAssigned = assigned ? "": " hide";
-  const grayoutText = assigned ? "replyAs" : ""
+  const [isAssigned, updateAssigned] = useState<boolean>(false)
+  const [isWritting, updateWritting] = useState<boolean>(false)
+  const [message, updateMessage] = useState<string>('')
+  const handleClick = () => updateAssigned(true);
+  const handleWritting = () => updateWritting(true);
+  const handleWrittingBlur = (event: { preventDefault: () => void; }) => {
+    if (message.trim().length === 0) {
+      updateWritting(false);
+    }
+  }
+  const send = (event: { preventDefault: () => void; }) => {
+    if (message.trim().length === 0) {
+      alert('The message is empty...');
+    } else {
+      alert('Message sent! --> '+message.trim());
+      updateAssigned(false)
+      updateWritting(false)
+      updateMessage('')
+    }
+  }
+  const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    updateMessage(event.target.value);
+  };
+  const name2Show = (isAssigned && user) ? user.name : 'Assign myself and reply';
+  const image = (isAssigned && user) ? user.img : '';
+  const showWhenUnAssigned = !isAssigned ? "": " hide";
+  const showWhenAssigned = isAssigned ? "": " hide";
+  const showWhenWritting = isWritting ? "hideBackground": "";
+  const grayoutText = isAssigned ? "replyAs" : ""
+  const selected = isAssigned ? "selected" : ""
   return (
-    <div className='chat-input-field' {...props} >
-      <label className={['replyAs',showWhenAssigned].join(' ')}>Replying as</label>
-      <button className={['extraComps', grayoutText].join(' ')} >
+    <div className={['chat-input-field',selected].join(' ')} {...props} >
+      <label className={['replyAs',showWhenWritting,showWhenAssigned].join(' ')}>Replying as</label>
+      <button className={['extraComps',showWhenWritting, grayoutText].join(' ')} onClick={handleClick}>
         <FiUserPlus  className={['add-icon', showWhenUnAssigned].join(' ')} />
         <Image src={image} alt="" className={['img-profile', showWhenAssigned].join(' ')} width={20} height={20}/>
         &nbsp;&nbsp;
         {name2Show}
       </button>
-      <input className={['text-input', showWhenAssigned].join(' ')} type='text' />
+      <input id='in_Chat' name='in_Chat' value={message} className={['text-input', showWhenAssigned].join(' ')} type='text' onFocus={handleWritting} onBlur={handleWrittingBlur} onChange={handleChange}/>
       <button className='sendComps' >
-        <FiSend  className='send-icon' />
+        <FiSend  className='send-icon' onClick={send} />
       </button>
     </div>
-
-
-    // <div className='chat-input-field' {...props} >
-    //   <label className={['replyAs',showWhenAssigned].join(' ')}>Replying as&nbsp;</label>
-    //   <div className={['extraComps', grayoutText].join(' ')}>
-    //     <FiUserPlus color='#6B42EE' size="24" strokeWidth="2.5" /> 
-    //     <Image src={image} alt="" className={['img-profile', showWhenAssigned].join(' ')} width={15} height={15}/>
-    //     {name2Show}
-    //   </div>
-    //   <input className={['text-input', showWhenAssigned].join(' ')} type='text' />
-    //   <div className='extraComps send'>
-    //     <FiSend className='send-icon'/> 
-    //   </div>
-    // </div>
   );
 };

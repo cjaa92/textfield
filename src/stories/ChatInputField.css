@@ -1,7 +1,7 @@
 .chat-input-field{
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   cursor: text;
-  border: none;
+  border: .1em solid;
   border-radius: 5px 5px;
   border-color: #ffffff;
   background-color: #ffffff;
@@ -48,13 +48,13 @@
   stroke-width: 2.5px;
   position: absolute;
   left: 2.5em;
-  top: 1.95em;
+  top: 2.05em;
 }
 
 .send-icon {
   position: absolute;
   right: .4em;
-  top: .3em;
+  top: .31em;
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -67,10 +67,19 @@
   display: none!important;
 }
 
+.hideBackground{
+  opacity: 0;
+}
+
+.selected{
+  border-color: #6B42EE!important;
+  border: .1em solid;
+}
+
 .img-profile{
   position: absolute;
-  left: 9.5em;
-  top: 1.8em;
+  left: 9.6em;
+  top: 1.9em;
   width: 1.3em !important;
   height: 1.3em !important;
   border-radius: 50% !important;
